@@ -9,6 +9,7 @@ body {
 
 #terminally-terminal {
 	font-family: monospace;
+	font-size: 2vh;
 	background-color: black;
 	color: white;
 	margin-left: auto;
@@ -17,4 +18,8 @@ body {
 	margin-bottom: auto;
 	width: 70vw;
 	height: 70vh;
+	padding-right: 3em;
+	padding-left: 3em;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }

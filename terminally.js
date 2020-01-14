@@ -1,13 +1,18 @@
+// DEFAULTS ///////////////////////////////////////////////////////////////////////////////////////
 // The default delay between characters typed into the terminal is 50 milliseconds.
 var typingDelay = 50;
 // The default text cursor is a block.
 var txtCursor = "&block;"
 var c = 0
+var lineCnt = 1;
+
 
 function type(term, txt, str, dir, typingDelay) {
-	$(term).append("<p>BUTT</p>");
-	console.log("ran type");
-	//setTimeout(terminalTypeAnimation, 800, txt, str, dir, "", typingDelay);
+	lineID = term + "-line-" + lineCnt;
+	lineCnt++;
+	$(term).append("<p id='" + lineID + "'>TEST</p>");
+	lineID = "#" + lineID;
+	setTimeout(terminalTypeAnimation, 800, lineID, txt, typingDelay);
 }
 
 // terminalTypeAnimation ///////////////////////////////////////////////////////////////////////////
@@ -17,9 +22,6 @@ function type(term, txt, str, dir, typingDelay) {
 // str - The "beginning" of the input; typically an empty string, "".
 // c - Index of the character from txt to begin typing from. Typically '0.'
 function terminalTypeAnimation(id, txt, str, typingDelay, c) {
-
-
-
 	if (c < txt.length) {
 		str = str + txt.charAt(c);
 		$(id).html(str + txtCursor);
@@ -33,5 +35,5 @@ function terminalTypeAnimation(id, txt, str, typingDelay, c) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {
-	type("#terminally-terminal");
+	type("#terminally-terminal", "BUTTTTTTTT");
 });
