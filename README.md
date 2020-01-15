@@ -29,9 +29,6 @@ command to have it all perform sequentially!
 Make sure your **terminally.js** text is in a **monospace font** for maximum authenticity. Or don't,
 if you're feeling creative.
 
-**terminally.js** doesn't have to be used to solely simulate a terminal; you can use it for other
-text animation effects if you're feeling creative.
-
 ## License
 ```
 Copyright 2020 Joel Elizaga
