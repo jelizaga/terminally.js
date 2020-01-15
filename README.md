@@ -33,7 +33,8 @@ if you're feeling creative.
 text animation effects if you're feeling creative.
 
 ## License
-```Copyright 2020 Joel Elizaga
+```
+Copyright 2020 Joel Elizaga
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
 associated documentation files (the "Software"), to deal in the Software without restriction,
