@@ -1,18 +1,29 @@
 // DEFAULTS ///////////////////////////////////////////////////////////////////////////////////////
-// The default delay between characters typed into the terminal is 50 milliseconds.
-var typingDelay = 50;
-// The default text cursor is a block.
-var txtCursor = "&block;"
-var c = 0
+const DEFAULT_TYPING_DELAY = 50;
+const DEFAULT_CURSOR = "&block;"
+const DEFAULT_C = 0;
+const DEFAULT_STR = "";
 var lineCnt = 1;
 
-
-function type(term, txt, str, dir, typingDelay) {
-	lineID = term + "-line-" + lineCnt;
+function type(term, txt, str, dir, typingDelay, c) {
+	lineID = term.substring(1) + "-line-" + lineCnt;
 	lineCnt++;
-	$(term).append("<p id='" + lineID + "'>TEST</p>");
-	lineID = "#" + lineID;
-	setTimeout(terminalTypeAnimation, 800, lineID, txt, typingDelay);
+	$(term).append("<p id='" + lineID + "'></p>");
+
+	if (typeof str == "undefined") {
+		str = DEFAULT_STR;
+	}
+	if (typeof c == "undefined") {
+		c = DEFAULT_C;
+	}
+	if (typeof typingDelay == "undefined") {
+		typingDelay = DEFAULT_TYPING_DELAY;
+	}
+	if (typeof cursor == "undefined") {
+		cursor = DEFAULT_CURSOR;
+	}
+	
+	setTimeout(terminalTypeAnimation, typingDelay, lineID, txt, str, c, cursor, typingDelay);
 }
 
 // terminalTypeAnimation ///////////////////////////////////////////////////////////////////////////
@@ -21,14 +32,18 @@ function type(term, txt, str, dir, typingDelay) {
 // txt - String representing the text to type out.
 // str - The "beginning" of the input; typically an empty string, "".
 // c - Index of the character from txt to begin typing from. Typically '0.'
-function terminalTypeAnimation(id, txt, str, typingDelay, c) {
+function terminalTypeAnimation(id, txt, str, c, cursor, typingDelay) {
+	console.log("id = " + id);
+	console.log("txt = " + txt);
+	console.log("str = " + str);
+	console.log("delay = " + typingDelay);
+	console.log("c = " + c);
+	console.log("cursor = " + cursor);
 	if (c < txt.length) {
 		str = str + txt.charAt(c);
-		$(id).html(str + txtCursor);
+		$("#" + id).html(str + cursor);
 		c++;
-		setTimeout(terminalTypeAnimation, typingDelay, id, txt, str, c);
-	} else {
-
+		setTimeout(terminalTypeAnimation, typingDelay, id, txt, str, c, cursor, typingDelay);
 	}
 }
 
@@ -36,4 +51,5 @@ function terminalTypeAnimation(id, txt, str, typingDelay, c) {
 
 $(document).ready(function() {
 	type("#terminally-terminal", "BUTTTTTTTT");
+	type("#terminally-terminal", "yolo")
 });
