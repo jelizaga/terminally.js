@@ -3,9 +3,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // AUTHOR: Joel Elizaga, 2020
-// DESCRIPTION: terminally.js is a JavaScript library intended for simulating terminal-like
-// animation behavior in HTML elements of your choice. Have fun!
 // LICENSE: MIT
+// terminally.js is a JavaScript library intended for simulating terminal-like
+// animation behavior in HTML elements of your choice. Have fun!
 //
 // /////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -121,10 +121,3 @@ function terminalTypeAnimation(id, txt, str, c, cursor, typingDelay) {
 		setTimeout(terminalTypeAnimation, typingDelay, id, txt, str, c, cursor, typingDelay);
 	}
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-$(document).ready(function() {
-	terminalInputLine("#terminally-terminal", "TEST TEST TEST");
-	terminalInputLine("#terminally-terminal", "yolo")
-});
