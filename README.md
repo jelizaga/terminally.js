@@ -23,10 +23,6 @@ Simulate terminal user input and line execution with the terminalInputLine() fun
 #### terminalOutput()
 Simulate a line of terminal output with the terminalOutput() function:
 
-#### runTerminal()
-Once you've written your terminal's 'script' with the above commands, execute the runTerminal()
-command to have it all perform sequentially!
-
 ### Changing Defaults
 
 #### changeDefaultCursor()
@@ -38,6 +34,12 @@ Change the default user to a different string. The default user is `"~$"`:
 #### changeDefaultTypingDelay()
 Change the default typing delay to a different integer. Delay is measured in milliseconds. The
 default typing delay is `50`:
+
+### Running the Terminal
+
+#### runTerminal()
+Once you've written your terminal's 'script' with the above commands, execute the runTerminal()
+command to have it all perform sequentially!
 
 ## Misc.
 Make sure your **terminally.js** text is in a **monospace font** for maximum authenticity. Or don't,
