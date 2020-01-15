@@ -12,18 +12,32 @@ Imagine this simulated 'terminal' as a stage. Write the 'script' for the termina
 the library's commands (terminalInput(), terminalInputLine(), and terminalOutput()), then order the
 animation to run with **runTerminal().**
 
-### terminalInput()
+### Scripting the Terminal
+
+#### terminalInput()
 Simulate terminal user input with the terminalInput() function:
 
-### terminalInputLine()
+#### terminalInputLine()
 Simulate terminal user input and line execution with the terminalInputLine() function:
 
-### terminalOutput()
+#### terminalOutput()
 Simulate a line of terminal output with the terminalOutput() function:
 
-### runTerminal()
+#### runTerminal()
 Once you've written your terminal's 'script' with the above commands, execute the runTerminal()
 command to have it all perform sequentially!
+
+### Changing Defaults
+
+#### changeDefaultCursor()
+Change the default cursor to a different HTML element. The default cursor is a `"&block;"`:
+
+#### changeDefaultUser()
+Change the default user to a different string. The default user is `"~$"`:
+
+#### changeDefaultTypingDelay()
+Change the default typing delay to a different integer. Delay is measured in milliseconds. The
+default typing delay is `50`:
 
 ## Misc.
 Make sure your **terminally.js** text is in a **monospace font** for maximum authenticity. Or don't,

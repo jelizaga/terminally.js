@@ -29,7 +29,9 @@
 // DEFAULTS ////////////////////////////////////////////////////////////////////////////////////////
 // Can be modified by end-user, but these are the defaults.
 const DEFAULT_TYPING_DELAY = 50;
-const DEFAULT_CURSOR = "&block;"
+var defaultTypingDelay = 50;
+var defaultCursor = "&block;"
+var defaultUser = "~$"
 const DEFAULT_C = 0;
 const DEFAULT_STR = "";
 // lineCnt
@@ -40,36 +42,30 @@ var lineCnt = 0;
 // Object containing the 'script' of the terminal to be ran upon the execution of runTerminal().
 var terminalScript;
 
-// terminalInput
+// terminalInput ///////////////////////////////////////////////////////////////////////////////////
 // Simulates user input of the given text into the given terminal.
-function terminalInput(terminalID, txt, str, dir, typingDelay, c) {
+//   terminalID - ID of the terminal HTML element.
+//   text - Text to animate into the terminal.
+//   delay - Delay occurring before this animation runs in milliseconds. Defaults to '0.'
+//   typingDelay - Delay occurring between printed characters in milliseconds.
+function terminalInput(terminalID, text, typingDelay) {
 	// We're adding to the last line typed, so we grab the last line's unique ID.
 	lineID = terminalID.substring(1) + "-line-" + lineCnt;
-
-	if (typeof str == "undefined") {
-		str = DEFAULT_STR;
-	}
-	if (typeof c == "undefined") {
-		c = DEFAULT_C;
-	}
+	// If the typingDelay wasn't specified, default to the defaultTypingDelay.
 	if (typeof typingDelay == "undefined") {
-		typingDelay = DEFAULT_TYPING_DELAY;
+		typingDelay = defaultTypingDelay;
 	}
-	if (typeof cursor == "undefined") {
-		cursor = DEFAULT_CURSOR;
-	}
-	setTimeout(terminalTypeAnimation, typingDelay, lineID, txt, str, c, cursor, typingDelay);
-}
-
-function runTerminal() {
-	for (terminalLine in terminalScript) {
-
-	}
+	setTimeout(terminalTypeAnimation, typingDelay, lineID, text, str, c, cursor, typingDelay);
 }
 
 // terminalInputLine
 // Simulates user input of the given text into the given terminal, then starts a new line.
-function terminalInputLine(term, txt, str, dir, typingDelay, c) {
+// This is the equivalent of a terminal operator typing in a line and pressing 'enter' or 'return.'
+//   terminalID - ID of the terminal HTML element.
+//   text - Text to animate into the terminal.
+//   typingDelay - Delay occurring between printed characters in milliseconds.
+//   user - 
+function terminalInputLine(terminalID, text, typingDelay, user) {
 	// Append new line to the specified term with a unique ID.
 	lineCnt++;
 	lineID = term.substring(1) + "-line-" + lineCnt;
@@ -101,6 +97,30 @@ function terminalOutputLine(term, txt) {
 	$(term).append("<p id='" + lineID + "'></p>");
 }
 
+// changeDefaultCursor /////////////////////////////////////////////////////////////////////////////
+// Changes the default terminal cursor to something else.
+//   cursor - String representing the HTML element to replace the default cursor with. The default
+//   cursor is "&block;".
+function changeDefaultCursor(cursor) {
+	defaultCursor = cursor;
+}
+
+// changeDefaultUser ///////////////////////////////////////////////////////////////////////////////
+// Changes the default terminal user to something else.
+//   user - String representing the user to default to for terminal input. The default user is "~$."
+//   The 'user' part of terminal input has a default class, 'terminal-user.'
+function changeDefaultUser(user) {
+	defaultUser = user;
+}
+
+// changeDefaultTypingDelay ////////////////////////////////////////////////////////////////////////
+// Changes the default typing delay to something else.
+//   delay - Integer representing the delay occuring between typed characters when terminal user
+//   inputs. The default delay is 50.
+function changeDefaultTypingDelay(delay) {
+	changeDefaultTypingDelay = delay;
+}
+
 // terminalTypeAnimation ///////////////////////////////////////////////////////////////////////////
 // Simulates the input into a terminal.
 // id - String representing the id of the element to type into.
@@ -119,5 +139,13 @@ function terminalTypeAnimation(id, txt, str, c, cursor, typingDelay) {
 		$("#" + id).html(str + cursor);
 		c++;
 		setTimeout(terminalTypeAnimation, typingDelay, id, txt, str, c, cursor, typingDelay);
+	}
+}
+
+// runTerminal /////////////////////////////////////////////////////////////////////////////////////
+// Executes the animation script you loaded into terminally.js.
+function runTerminal() {
+	for (terminalLine in terminalScript) {
+
 	}
 }
