@@ -8,10 +8,7 @@ body {
 }
 
 #terminally-terminal {
-	font-family: monospace;
-	font-size: 2vh;
 	background-color: black;
-	color: white;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
@@ -22,4 +19,14 @@ body {
 	padding-left: 3em;
 	padding-top: 1em;
 	padding-bottom: 1em;
+}
+
+#terminally-terminal p {
+	color: white;
+	font-family: monospace;
+	font-size: 2vh;
+}
+
+#terminally-terminal .terminal-prompt {
+	color: green;
 }
